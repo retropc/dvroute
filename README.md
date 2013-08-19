@@ -1,7 +1,7 @@
 Dynamic VPN Router
 ==================
 
-I wrote this program to allow me to watch US Netflix on my Smart TV in the UK.
+I wrote this program to allow me to watch US Netflix on my Smart TV in the UK, while still allowing operation of apps like BBC iPlayer (UK).
 
 It runs a small DNS server which looks at DNS queries and inserts iptables rules to re-route the traffic as required.
 

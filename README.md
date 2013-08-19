@@ -195,7 +195,7 @@ Diagnostics
     ping 10.8.0.1
 
 #### TV sending traffic to the gateway (while pinging)?
-    tcpdump -i eth0 host **192.168.1.30**
+<pre>tcpdump -i eth0 host <b>192.168.1.30</b></pre>
     
 #### Traffic traversing the tunnel (while pinging)?
     tcpdump -i tun0
@@ -207,9 +207,9 @@ Diagnostics
     ip route ls table vps
     
 ### Is iptables correctly configured?
-   iptables -t -L
-   iptables -t nat -L
-   iptables -t mangle -L
+    iptables -t -L
+    iptables -t nat -L
+    iptables -t mangle -L
 
 ### VPS
 
@@ -217,8 +217,8 @@ Diagnostics
     ping 10.8.0.2
     
 #### Is LAN OpenVPN sending traffic to the VPS (while pinging)?
-    tcpdump -i eth0 host **172.16.44.11**
-    
+<pre>tcpdump -i eth0 host <b>172.16.44.11</b></pre>
+
 #### Traffic traversing the tunnel (while pinging)?
     tcpdump -i tun0
     

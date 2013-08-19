@@ -1,3 +1,5 @@
+config.py
+nohup.out
 *.py[cod]
 
 # C extensions

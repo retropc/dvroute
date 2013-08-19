@@ -87,7 +87,7 @@ script-security 2
     /sbin/ip rule ls | /bin/grep  "from all fwmark 0x2 lookup vps" >/dev/null || /sbin/ip rule add fwmark 2 table vps # HACK
     /sbin/iptables-restore < /etc/firewall.conf
     /sbin/sysctl -w net.ipv4.ip_forward=1
-    
+
 ###### /etc/firewall.conf
 
 <pre>
@@ -196,32 +196,47 @@ Diagnostics
 
 #### TV sending traffic to the gateway (while pinging)?
 <pre>tcpdump -i eth0 host <b>192.168.1.30</b></pre>
-    
+
 #### Traffic traversing the tunnel (while pinging)?
     tcpdump -i tun0
-    
+
 #### Does the routing table mark rule exists and the priorities correct?
     ip rule ls
-    
+
 #### Is the routing table correct?
     ip route ls table vps
-    
-### Is iptables correctly configured?
+
+#### Is iptables correctly configured?
     iptables -t -L
     iptables -t nat -L
     iptables -t mangle -L
+
+#### Does dvroute run?
+(make sure not already running first!)
+
+    sudo dvroute -n
+
+#### Does remote DNS work?
+    dig www.netflix.com @10.8.0.1
+    
+#### Is dvroute running/working?
+    dig www.netflix.com @127.0.0.1
+    dig www.example.com @127.0.0.1
 
 ### VPS
 
 #### Tunnel up?
     ping 10.8.0.2
-    
+
 #### Is LAN OpenVPN sending traffic to the VPS (while pinging)?
 <pre>tcpdump -i eth0 host <b>172.16.44.11</b></pre>
 
 #### Traffic traversing the tunnel (while pinging)?
     tcpdump -i tun0
-    
-### Is iptables correctly configured?
+
+#### Is iptables correctly configured?
     iptables -t -L
     iptables -t nat -L
+
+#### Does dnsmasq work?
+    dig www.example.com @127.0.0.1

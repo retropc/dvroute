@@ -1,0 +1,21 @@
+#!/bin/sh
+
+# HACK
+
+set -e
+
+if [ "$USER" != "root" ]; then
+  echo must run as root
+  exit 1
+fi
+
+BASEDIR=$(dirname $0)
+cd $BASEDIR
+
+python -c "import dvroute"
+if [ "$1" =  "-n" ]; then
+  python ./dvroute.py
+else
+  nohup python ./dvroute.py >/dev/null 2>&1 &
+fi
+
